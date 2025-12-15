@@ -12,6 +12,9 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.DirectMessages,
         GatewayIntentBits.GuildMembers,
+        "DirectMessageReactions",
+        "GuildMessageReactions"
+        
     ],
     partials: [
         Partials.Message,
@@ -23,10 +26,10 @@ const client = new Client({
 client.prefixCommands = new Collection();
 client.slashCommands = new Collection();
 
+
 client.config = {
 	PREFIX: "."
 }; 
-
 
 const filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(filename);
@@ -62,7 +65,6 @@ for (const file of slashCommandFiles) {
     const slashCommand = slashCommandImport.default;
 
     if(!slashCommand.execute) continue;
-    console.log(slashCommand)
     client.slashCommands.set(slashCommand.data.name, slashCommand.execute);
 }
 
