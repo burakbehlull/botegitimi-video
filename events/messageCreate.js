@@ -1,6 +1,6 @@
 
 export default {
-    name: "messageDelete",
+    name: "messageCreate",
     async execute(client, message) {
         const prefix = client.config.PREFIX;
 

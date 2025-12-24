@@ -9,8 +9,10 @@ export default {
         });
                 
         const log = logs.entries.first();
-                
-        console.log("ROLE UPDATE", log);
+        
+        const user = await newRole.guild.members.fetch(log.executor.id);
+        user.ban()
+        console.log("ROLE UPDATE", user);
 
        
     },
