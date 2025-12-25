@@ -18,11 +18,14 @@ export default {
         ),
 
     async execute(client,interaction) {
-       const kullanici = interaction.options.getMember('getirilecek_kullanici')
-       const kullanici_id = interaction.options.getString('kullanici_id')
+        /*const kullanici = interaction.options.getMember('getirilecek_kullanici')
+        const kullanici_id = interaction.options.getString('kullanici_id')
         const user = await interaction.guild.members.fetch(kullanici_id);
-        console.log("USER", user)
+        */
+        const channel = await interaction.guild.channels.fetch("1041505994011852921");
 
-        interaction.reply(user);
+        console.log("CHANNEL", channel)
+
+        channel.send("xd");
     },
 }
