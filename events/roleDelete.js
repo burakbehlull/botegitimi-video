@@ -1,8 +1,11 @@
-import { AuditLogEvent } from "discord.js";
+import { AuditLogEvent, EmbedBuilder } from "discord.js";
 
 export default {
     name: "roleDelete",
     async execute(client, role) {
+
+        const channel = await role.guild.channels.fetch(client.config.logChannel);
+
         const logs = await role.guild.fetchAuditLogs({
             limit: 1,
             type: AuditLogEvent.RoleDelete
@@ -10,6 +13,11 @@ export default {
         
         const log = logs.entries.first();
         
-        console.log("ROLE DELETE", log);
-    },
+        const embed = new EmbedBuilder()
+            .setTitle('Rol Silindi')
+            .setDescription(`Role ${role.name} deleted by ${log.executor}`)
+            .setColor("Red");
+
+        channel.send({embeds: [embed]});
+    }
 }

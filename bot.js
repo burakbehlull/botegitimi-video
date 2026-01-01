@@ -28,7 +28,8 @@ client.slashCommands = new Collection();
 
 
 client.config = {
-	PREFIX: "."
+	PREFIX: ".",
+    logChannel: "1455162958949646336"
 }; 
 
 const filename = fileURLToPath(import.meta.url);
