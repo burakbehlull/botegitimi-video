@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { Client, GatewayIntentBits, Partials, Collection } from "discord.js";
+import mongoose from "mongoose";
 
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
@@ -22,6 +23,10 @@ const client = new Client({
     ],
 
 });
+
+mongoose.connect("mongodb://localhost:27017/videobot")
+    .then(() => console.log("MongoDB connected"))
+    .catch(err => console.log("HATA: ", err));
 
 client.prefixCommands = new Collection();
 client.slashCommands = new Collection();
